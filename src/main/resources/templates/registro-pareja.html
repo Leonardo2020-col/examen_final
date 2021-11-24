@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> <!-- Custom Tag -->
+<head>
+  <title>Registro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registro de Carrera</h2>
+  <form th:action="@{/grabar}" method="post" th:object="${alumno}">
+    <div class="form-group">
+      <label >Codigo:</label>
+      <input type="email" class="form-control" placeholder="Ingrese codigo" th:field="*{codigo}">
+    </div>
+    <div class="form-group">
+      <label >Nombre</label>
+      <input type="password" class="form-control" placeholder="Ingrese nombre" th:field="*{nombre}">
+    </div>
+     <div class="form-group">
+		   <label>Carrera</label>
+		   <select class="form-control" th:field="*{carrera}">
+		   <option th:value="-1" th:text="Seleccione"></option>
+		   <option th:each="c : ${lstCarreras}"
+		      th:value="${c.codcarrera}" th:text="${c.nombre}"
+		      >
+			 </select>
+		  </div>
+    <div class="form-group">
+      <label for="pwd">Edad:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Ingrese edad" th:field="*{edad}">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Sección:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Ingrese seccion" th:field="*{seccion}">
+    </div>
+    <button type="submit" class="btn btn-primary">Registro</button>
+    <a href="/pdf" class="btn btn-info">PDF</a>
+    <a href="/grafico" class="btn btn-danger">Grafico</a>
+  </form>
+</div>
+
+</body>
+</html>
